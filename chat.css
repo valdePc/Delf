@@ -1,0 +1,284 @@
+/* chat.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Cabecera del chat */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.header-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.header-right button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Área de conversación */
+.chat-area {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #e5ddd5;
+  /* Para que no quede oculta por la entrada fija, se añade margen inferior */
+  margin-bottom: 60px;
+}
+
+/* Mensajes de chat */
+.chat-message {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.chat-message.received {
+  flex-direction: row;
+}
+
+.chat-message.sent {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 5px;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 15px;
+  background: #fff;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.chat-message.sent .message-content {
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  color: #fff;
+}
+
+.message-time {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.read {
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+/* Área de entrada de mensajes: ahora se fija justo encima de la barra inferior */
+.chat-input {
+  position: fixed;
+  bottom: 60px;  /* Ajusta según la altura de la barra inferior */
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  z-index: 101;
+}
+
+.chat-input input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #f0f0f0;
+  margin: 0 10px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Menú extra de opciones */
+.chat-extra-menu {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  display: none;
+  z-index: 100;
+}
+
+.chat-extra-menu ul {
+  list-style: none;
+}
+
+.chat-extra-menu ul li {
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-extra-menu ul li:last-child {
+  border-bottom: none;
+}
+
+.chat-extra-menu .extra-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+}
+
+.chat-extra-menu .extra-btn i {
+  margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header-name {
+    font-size: 1rem;
+  }
+  .chat-input input[type="text"] {
+    font-size: 0.9rem;
+  }
+}
+
+/* Barra de navegación inferior fija */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ocultar la barra inferior */
+.bottom-nav.hidden {
+  transform: translateY(100%);
+}
+
+/* Barra de opciones (alternativa) */
+.options-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 101;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Mostrar la barra de opciones */
+.options-bar.visible {
+  display: flex;
+  transform: translateY(0);
+}
+
+.bottom-nav .nav-btn,
+.options-bar .nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bottom-nav .nav-btn span,
+.options-bar .nav-btn span {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.bottom-nav .nav-btn.active,
+.options-bar .nav-btn.active {
+  color: #fc00ff;
+}
+
+/* Botón flotante de configuración */
+.floating-config-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #00dbde;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 110;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

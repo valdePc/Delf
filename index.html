@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Delf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Vinculación al CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome para los íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Botón flotante para ir a perfil -->
+  <a href="perfil.html" class="floating-btn">Ver</a>
+
+  <div class="container">
+    <!-- Caja principal de inicio de sesión -->
+    <div class="login-box">
+      <h1>Bienvenido</h1>
+      <form id="login-form">
+        <div class="input-group">
+          <input type="email" id="login-email" placeholder="Correo electrónico" required>
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn">Iniciar Sesión</button>
+      </form>
+      <div class="options">
+        <a href="#" id="open-register">Crear Cuenta</a> | 
+        <a href="#" id="open-reset">Restablecer Contraseña</a>
+      </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="register-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-register">&times;</span>
+        <h2>Crear Cuenta</h2>
+        <form id="register-form">
+          <div class="input-group">
+            <input type="text" id="register-name" placeholder="Nombre Completo" required>
+          </div>
+          <div class="input-group">
+            <input type="email" id="register-email" placeholder="Correo Electrónico" required>
+          </div>
+          <div class="input-group">
+            <input type="password" id="register-password" placeholder="Contraseña" required>
+          </div>
+          <button type="submit" class="btn">Registrarse</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Restablecimiento de Contraseña -->
+    <div id="reset-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-reset">&times;</span>
+        <h2>Restablecer Contraseña</h2>
+        <form id="reset-form">
+          <div class="input-group">
+            <input type="email" id="reset-email" placeholder="Correo Electrónico" required>
+          </div>
+          <button type="submit" class="btn">Enviar Instrucciones</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Vinculación al JavaScript externo (autenticación y modales) -->
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil de Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vincular el archivo CSS -->
+  <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+  <!-- Barra superior de estados (similar a Instagram) -->
+  <div class="status-bar">
+    <div class="status">
+      <img src="https://via.placeholder.com/60" alt="Estado 1">
+      <span>Contacto 1</span>
+    </div>
+    <div class="status">
+      <img src="https://via.placeholder.com/60" alt="Estado 2">
+      <span>Contacto 2</span>
+    </div>
+    <div class="status">
+      <img src="https://via.placeholder.com/60" alt="Estado 3">
+      <span>Contacto 3</span>
+    </div>
+    <!-- Puedes agregar más estados según necesites -->
+  </div>
+
+  <!-- Lista de chats (similar a WhatsApp) -->
+  <div class="chat-list">
+    <div class="chat-item">
+      <div class="chat-swipe-wrapper">
+        <!-- Opciones que se revelan al deslizar a la izquierda -->
+        <div class="chat-options chat-options-left">
+          <button class="pin-btn"><i class="fa-solid fa-thumbtack"></i></button>
+          <button class="more-btn"><i class="fa-solid fa-ellipsis-v"></i></button>
+          <div class="more-menu">
+            <ul>
+              <li>Ver info</li>
+              <li>Silenciar</li>
+              <li>Restringir</li>
+              <li>Vaciar chat</li>
+              <li>Añadir a favoritos</li>
+              <li>Bloquear</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Contenido del chat -->
+        <div class="chat-content" data-contact-id="123">
+          <img class="chat-avatar" src="https://via.placeholder.com/50" alt="Avatar">
+          <div class="chat-info">
+            <div class="chat-header">
+              <span class="chat-name">Nombre Contacto</span>
+              <span class="chat-time">12:30</span>
+            </div>
+            <div class="chat-snippet">Último mensaje enviado...</div>
+          </div>
+        </div>
+        
+        </div>
+        <!-- Opciones que se revelan al deslizar a la derecha -->
+        <div class="chat-options chat-options-right">
+          <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segundo chat de ejemplo -->
+    <div class="chat-item">
+      <div class="chat-swipe-wrapper">
+        <div class="chat-options chat-options-left">
+          <button class="pin-btn"><i class="fa-solid fa-thumbtack"></i></button>
+          <button class="more-btn"><i class="fa-solid fa-ellipsis-v"></i></button>
+          <div class="more-menu">
+            <ul>
+              <li>Ver info</li>
+              <li>Silenciar</li>
+              <li>Restringir</li>
+              <li>Vaciar chat</li>
+              <li>Añadir a favoritos</li>
+              <li>Bloquear</li>
+            </ul>
+          </div>
+        </div>
+        <div class="chat-content">
+          <img class="chat-avatar" src="https://via.placeholder.com/50" alt="Avatar">
+          <div class="chat-info">
+            <div class="chat-header">
+              <span class="chat-name">Otro Contacto</span>
+              <span class="chat-time">11:15</span>
+            </div>
+            <div class="chat-snippet">Hola, ¿cómo estás?</div>
+          </div>
+        </div>
+        <div class="chat-options chat-options-right">
+          <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- Agrega más chat-items según lo necesites -->
+  </div>
+
+  <!-- Barra de navegación inferior fija -->
+  <div class="bottom-nav">
+  <button class="nav-btn" id="reelsBtn"><i class="fa-solid fa-video"></i><span>Reels</span></button>
+  <button class="nav-btn" id="phoneBtn"><i class="fa-solid fa-phone"></i><span>Teléfono</span></button>
+  <button class="nav-btn" id="groupsBtn"><i class="fa-solid fa-users"></i><span>Grupos</span></button>
+  <button class="nav-btn" id="chatBtn"><i class="fa-solid fa-comments"></i><span>Chat</span></button>
+  <button class="nav-btn" id="configBtn"><i class="fa-solid fa-gear"></i><span>Configuración</span></button>
+</div>
+
+
+  <!-- Vincular el archivo JavaScript -->
+  <script src="perfil.js"></script>
+</body>
+</html>

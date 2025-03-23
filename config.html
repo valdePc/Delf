@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuración</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vincular el archivo CSS -->
+  <link rel="stylesheet" href="config.css">
+</head>
+<body>
+  <header class="config-header">
+    <button class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+    <!-- Título de la página -->
+    <h1 id="pageTitle">Configuración</h1>
+  </header>
+
+  <main class="config-main">
+    <!-- Sección de Perfil -->
+    <section class="config-section">
+      <h2 id="perfilTitle">Perfil</h2>
+      <div class="config-item center">
+        <img id="profilePhotoDisplay" src="default-profile.png" alt="Foto de Perfil">
+      </div>
+      <p id="displayName" class="profile-name"></p>
+      <div class="config-item">
+        <label id="cambiarFotoLabel" for="profilePhoto">Cambiar Foto de Perfil:</label>
+        <input type="file" id="profilePhoto" accept="image/*">
+      </div>
+      <div class="config-item">
+        <label id="nombreLabel" for="profileName">Nombre:</label>
+        <input type="text" id="profileName" placeholder="Tu nombre">
+      </div>
+      <div class="config-item">
+        <button id="saveProfileBtn" class="save-btn">Guardar Cambios</button>
+      </div>
+    </section>
+
+    <!-- Sección de Cuenta -->
+    <section class="config-section">
+      <h2 id="cuentaTitle">Cuenta</h2>
+      <div class="config-item">
+        <label id="correoLabel" for="email">Correo Electrónico:</label>
+        <input type="email" id="email" placeholder="tucorreo@example.com">
+      </div>
+      <div class="config-item">
+        <label id="passwordLabel" for="password">Cambiar Contraseña:</label>
+        <input type="password" id="password" placeholder="Nueva contraseña">
+      </div>
+    </section>
+
+    <!-- Sección de Notificaciones -->
+    <section class="config-section">
+      <h2 id="notificacionesTitle">Notificaciones</h2>
+      <div class="config-item toggle">
+        <span id="pushLabel">Notificaciones Push</span>
+        <label class="switch">
+          <input type="checkbox" id="pushNotifications">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="config-item toggle">
+        <span id="sonidosLabel">Sonidos</span>
+        <label class="switch">
+          <input type="checkbox" id="soundNotifications">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Sección de Privacidad -->
+    <section class="config-section">
+      <h2 id="privacidadTitle">Privacidad</h2>
+      <div class="config-item toggle">
+        <span id="ultimaConexionLabel">Mostrar Última Conexión</span>
+        <label class="switch">
+          <input type="checkbox" id="lastSeen" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="config-item toggle">
+        <span id="incognitoLabel">Modo Incógnito</span>
+        <label class="switch">
+          <input type="checkbox" id="incognitoMode">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Sección de Idioma y Tema -->
+    <section class="config-section">
+      <h2 id="idiomaTemaTitle">Idioma y Tema</h2>
+      <div class="config-item">
+        <label id="idiomaLabel" for="languageSelect">Idioma:</label>
+        <select id="languageSelect">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Português</option>
+          <option value="ru">Русский</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+          <option value="hi">हिंदी</option>
+        </select>
+      </div>
+      <div class="config-item toggle">
+        <span id="temaOscuroLabel">Tema Oscuro</span>
+        <label class="switch large">
+          <input type="checkbox" id="darkTheme">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Sección de Cerrar Sesión -->
+    <section class="config-section">
+      <h2 id="cuenta2Title">Cuenta</h2>
+      <div class="config-item">
+        <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Barra de navegación inferior, común a todas las interfaces -->
+  <div class="bottom-nav">
+    <button class="nav-btn" id="reelsBtn">
+      <i class="fa-solid fa-video"></i>
+      <span>Reels</span>
+    </button>
+    <button class="nav-btn" id="phoneBtn">
+      <i class="fa-solid fa-phone"></i>
+      <span>Teléfono</span>
+    </button>
+    <button class="nav-btn" id="groupsBtn">
+      <i class="fa-solid fa-users"></i>
+      <span>Grupos</span>
+    </button>
+    <button class="nav-btn" id="chatBtn">
+      <i class="fa-solid fa-comments"></i>
+      <span>Chat</span>
+    </button>
+    <button class="nav-btn" id="configBtn">
+      <i class="fa-solid fa-gear"></i>
+      <span>Configuración</span>
+    </button>
+  </div>
+
+  <script src="config.js"></script>
+</body>
+</html>

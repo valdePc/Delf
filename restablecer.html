@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Restablecer Contraseña</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cargar la librería EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  <!-- Vincular la hoja de estilos (puedes personalizar restablecer.css a tu gusto) -->
+  <link rel="stylesheet" href="restablecer.css">
+</head>
+<body>
+  <div class="container">
+    <div class="reset-box">
+      <h1>Restablecer Contraseña</h1>
+      <form id="reset-form">
+        <div class="input-group">
+          <input type="email" id="reset-email" placeholder="Introduce tu correo electrónico" required>
+        </div>
+        <button type="submit" class="btn">Enviar Instrucciones</button>
+      </form>
+      <p>Recibirás un email con las instrucciones para restablecer tu contraseña.</p>
+    </div>
+  </div>
+
+  <!-- Vincular el archivo JavaScript de restablecimiento -->
+  <script src="restablecer.js"></script>
+</body>
+</html>

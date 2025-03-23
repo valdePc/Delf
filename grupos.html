@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupo</title>
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Archivo CSS -->
+  <link rel="stylesheet" href="grupos.css">
+</head>
+<body>
+  <!-- Cabecera del Grupo -->
+  <header class="group-header">
+    <div class="group-info">
+      <img class="group-avatar" src="https://via.placeholder.com/50" alt="Avatar del Grupo">
+      <div class="group-details">
+        <h2>Nombre del Grupo</h2>
+        <p>5 miembros</p>
+      </div>
+    </div>
+    <div class="group-actions">
+      <button class="action-btn" title="Agregar miembro"><i class="fa-solid fa-user-plus"></i></button>
+      <button class="action-btn" title="Configuración del grupo"><i class="fa-solid fa-gear"></i></button>
+    </div>
+  </header>
+  
+  <!-- Contenedor principal del grupo -->
+  <div class="group-container">
+    <!-- Barra lateral con la lista de miembros -->
+    <aside class="group-members">
+      <h3>Miembros</h3>
+      <ul>
+        <li>
+          <img src="https://via.placeholder.com/40" alt="Avatar">
+          <span>Usuario 1</span>
+        </li>
+        <li>
+          <img src="https://via.placeholder.com/40" alt="Avatar">
+          <span>Usuario 2</span>
+        </li>
+        <li>
+          <img src="https://via.placeholder.com/40" alt="Avatar">
+          <span>Usuario 3</span>
+        </li>
+        <li>
+          <img src="https://via.placeholder.com/40" alt="Avatar">
+          <span>Usuario 4</span>
+        </li>
+        <li>
+          <img src="https://via.placeholder.com/40" alt="Avatar">
+          <span>Usuario 5</span>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Área de chat del grupo -->
+    <main class="group-chat">
+      <div class="chat-messages">
+        <!-- Ejemplo de mensaje recibido -->
+        <div class="chat-message received">
+          <img class="message-avatar" src="https://via.placeholder.com/30" alt="Avatar">
+          <div class="message-content">
+            <p>Hola a todos, bienvenidos al grupo.</p>
+            <span class="message-time">10:00</span>
+          </div>
+        </div>
+        <!-- Ejemplo de mensaje enviado -->
+        <div class="chat-message sent">
+          <div class="message-content">
+            <p>Gracias, es un placer estar aquí.</p>
+            <span class="message-time">10:02</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Área para escribir mensajes -->
+      <footer class="chat-input">
+        <input type="text" id="groupMessageInput" placeholder="Escribe un mensaje...">
+        <button id="sendGroupMsgBtn"><i class="fa-solid fa-paper-plane"></i></button>
+      </footer>
+    </main>
+  </div>
+  
+  <!-- Archivo JavaScript -->
+  <script src="grupos.js"></script>
+</body>
+</html>

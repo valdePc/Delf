@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chat</title>
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vincular el archivo CSS -->
+  <link rel="stylesheet" href="chat.css">
+  <!-- Incluir Firebase (si se usa en chat.js) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+
+  <!-- Cabecera del chat -->
+  <header class="chat-header">
+    <div class="header-left">
+      <img class="header-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+      <span class="header-name">Nombre Usuario</span>
+    </div>
+    <div class="header-right">
+      <button class="call-btn"><i class="fa-solid fa-phone"></i></button>
+      <button class="video-btn"><i class="fa-solid fa-video"></i></button>
+    </div>
+  </header>
+  
+  <!-- Barra de selección de idioma -->
+  <div class="language-bar">
+    <select id="languageSelect">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="zh">中文 (Simplified)</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="ru">Русский</option>
+      <option value="pt">Português</option>
+      <option value="it">Italiano</option>
+      <option value="ar">العربية</option>
+      <option value="hi">हिन्दी</option>
+      <option value="bn">বাংলা</option>
+      <option value="nl">Nederlands</option>
+      <option value="sv">Svenska</option>
+      <option value="no">Norsk</option>
+      <option value="da">Dansk</option>
+      <option value="fi">Suomi</option>
+      <option value="pl">Polski</option>
+      <option value="tr">Türkçe</option>
+      <option value="el">Ελληνικά</option>
+      <option value="cs">Čeština</option>
+      <option value="hu">Magyar</option>
+      <option value="ro">Română</option>
+      <option value="bg">Български</option>
+      <option value="id">Bahasa Indonesia</option>
+      <option value="ms">Bahasa Melayu</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="th">ไทย</option>
+    </select>
+  </div>
+
+  <!-- Área de conversación -->
+  <main class="chat-area">
+    <!-- Ejemplo de mensaje recibido -->
+    <div class="chat-message received">
+      <img class="message-avatar" src="https://via.placeholder.com/30" alt="Avatar">
+      <div class="message-content">
+        <p>Hola, ¿cómo estás?</p>
+        <span class="message-time">10:15</span>
+      </div>
+    </div>
+    <!-- Ejemplo de mensaje enviado -->
+    <div class="chat-message sent">
+      <div class="message-content">
+        <p>Muy bien, gracias. ¿Y tú?</p>
+        <span class="message-time">10:16 <i class="fa-solid fa-check-double read"></i></span>
+      </div>
+    </div>
+    <!-- Aquí se agregarán los mensajes en tiempo real -->
+  </main>
+
+  <!-- Área para escribir mensajes -->
+  <footer class="chat-input">
+    <button class="camera-btn" id="cameraBtn"><i class="fa-solid fa-camera"></i></button>
+    <input type="text" id="messageInput" placeholder="Escribe un mensaje...">
+    <button class="send-btn" id="sendBtn" style="display: none;"><i class="fa-solid fa-paper-plane"></i></button>
+    <button class="mic-btn" id="micBtn"><i class="fa-solid fa-microphone"></i></button>
+    <button class="plus-btn" id="plusBtn"><i class="fa-solid fa-plus"></i></button>
+  </footer>
+  
+  <!-- Menú extra con opciones adicionales (oculto por defecto) -->
+  <div class="chat-extra-menu" id="extraMenu">
+    <ul>
+      <li><button class="extra-btn"><i class="fa-solid fa-image"></i><span>Fotos</span></button></li>
+      <li><button class="extra-btn"><i class="fa-solid fa-file"></i><span>Archivos</span></button></li>
+      <li><button class="extra-btn"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></button></li>
+      <li><button class="extra-btn"><i class="fa-solid fa-address-book"></i><span>Contacto</span></button></li>
+      <li><button class="extra-btn"><i class="fa-solid fa-chart-simple"></i><span>Encuesta</span></button></li>
+      <li><button class="extra-btn"><i class="fa-solid fa-calendar-days"></i><span>Evento</span></button></li>
+    </ul>
+  </div>
+
+  <!-- Barra de navegación inferior -->
+  <div class="bottom-nav">
+    <button class="nav-btn" id="reelsBtn"><i class="fa-solid fa-video"></i><span>Reels</span></button>
+    <button class="nav-btn" id="phoneBtn"><i class="fa-solid fa-phone"></i><span>Teléfono</span></button>
+    <button class="nav-btn" id="groupsBtn"><i class="fa-solid fa-users"></i><span>grupos</span></button>
+    <button class="nav-btn" id="chatBtn"><i class="fa-solid fa-comments"></i><span>Perfil</span></button>
+    <button class="nav-btn" id="configBtn"><i class="fa-solid fa-gear"></i><span>Configuración</span></button>
+  </div>
+  
+  <!-- Botón flotante de configuración (opcional) -->
+  <button id="floatingConfigBtn" class="floating-config-btn" style="display:none;">
+    <i class="fa-solid fa-gear"></i>
+  </button>
+
+  <!-- Vincular los archivos JavaScript -->
+  <script src="chat.js"></script>
+  <script src="camera.js"></script>
+</body>
+</html>

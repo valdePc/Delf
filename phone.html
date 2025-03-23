@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Teléfono</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vincular el archivo CSS para la interfaz de teléfono -->
+  <link rel="stylesheet" href="phone.css">
+</head>
+<body>
+  <!-- Encabezado de la interfaz de teléfono -->
+  <header class="phone-header">
+    <h1>Teléfono</h1>
+  </header>
+
+  <!-- Área principal: Historial de llamadas -->
+  <main class="phone-main">
+    <ul class="call-log">
+      <li class="call-item">
+        <img class="call-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+        <div class="call-details">
+          <span class="call-name">Contacto 1</span>
+          <span class="call-time">Hoy, 10:30</span>
+        </div>
+        <!-- Botón para llamada de audio -->
+        <button class="call-action audio-call">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <!-- Botón para videollamada -->
+        <button class="call-action video-call">
+          <i class="fa-solid fa-camera"></i>
+        </button>
+      </li>
+      <li class="call-item">
+        <img class="call-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+        <div class="call-details">
+          <span class="call-name">Contacto 2</span>
+          <span class="call-time">Ayer, 17:45</span>
+        </div>
+        <button class="call-action audio-call">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <button class="call-action video-call">
+          <i class="fa-solid fa-camera"></i>
+        </button>
+      </li>
+      <li class="call-item">
+        <img class="call-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+        <div class="call-details">
+          <span class="call-name">Contacto 3</span>
+          <span class="call-time">Ayer, 12:15</span>
+        </div>
+        <button class="call-action audio-call">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <button class="call-action video-call">
+          <i class="fa-solid fa-camera"></i>
+        </button>
+      </li>
+      <!-- Agrega más elementos de historial según necesites -->
+    </ul>
+  </main>
+
+  <!-- Barra de navegación inferior, común a todas las interfaces -->
+  <div class="bottom-nav">
+    <button class="nav-btn" id="reelsBtn">
+      <i class="fa-solid fa-video"></i>
+      <span>Reels</span>
+    </button>
+    <button class="nav-btn" id="phoneBtn">
+      <i class="fa-solid fa-phone"></i>
+      <span>Teléfono</span>
+    </button>
+    <button class="nav-btn" id="groupsBtn">
+      <i class="fa-solid fa-users"></i>
+      <span>Grupos</span>
+    </button>
+    <button class="nav-btn" id="chatBtn">
+      <i class="fa-solid fa-comments"></i>
+      <span>Chat</span>
+    </button>
+    <button class="nav-btn" id="configBtn">
+      <i class="fa-solid fa-gear"></i>
+      <span>Configuración</span>
+    </button>
+  </div>
+
+  <!-- Vincular el archivo JavaScript para la funcionalidad de teléfono -->
+  <script src="phone.js"></script>
+</body>
+</html>
