@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Font Awesome para los íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS para intl-tel-input -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 </head>
 <body>
 
@@ -20,10 +22,14 @@
       <h1>Bienvenido</h1>
       <form id="login-form">
         <div class="input-group">
-          <input type="email" id="login-email" placeholder="Correo electrónico" required>
+          <!-- Campo de teléfono con auto detección de país y formateo -->
+          <input type="tel" id="login-phone" placeholder="Número de Teléfono" required>
         </div>
-        <div class="input-group">
+        <div class="input-group" style="position: relative;">
           <input type="password" id="login-password" placeholder="Contraseña" required>
+          <span id="toggle-login-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+            Mostrar
+          </span>
         </div>
         <button type="submit" class="btn">Iniciar Sesión</button>
       </form>
@@ -39,14 +45,31 @@
         <span class="close" id="close-register">&times;</span>
         <h2>Crear Cuenta</h2>
         <form id="register-form">
+          <!-- Nombre completo -->
           <div class="input-group">
             <input type="text" id="register-name" placeholder="Nombre Completo" required>
           </div>
-          <div class="input-group">
-            <input type="email" id="register-email" placeholder="Correo Electrónico" required>
+          <!-- Teléfono con intl-tel-input -->
+          <div class="input-group" style="position: relative;">
+            <input type="tel" id="register-phone" placeholder="Número de Teléfono" required>
           </div>
+          <!-- Fecha de Cumpleaños -->
           <div class="input-group">
+            <input type="date" id="register-birthdate" placeholder="Fecha de Cumpleaños" required>
+          </div>
+          <!-- Contraseña con toggle -->
+          <div class="input-group" style="position: relative;">
             <input type="password" id="register-password" placeholder="Contraseña" required>
+            <span id="toggle-register-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+              Mostrar
+            </span>
+          </div>
+          <!-- Confirmar Contraseña con toggle -->
+          <div class="input-group" style="position: relative;">
+            <input type="password" id="register-confirm-password" placeholder="Confirmar Contraseña" required>
+            <span id="toggle-register-confirm-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+              Mostrar
+            </span>
           </div>
           <button type="submit" class="btn">Registrarse</button>
         </form>
@@ -60,13 +83,164 @@
         <h2>Restablecer Contraseña</h2>
         <form id="reset-form">
           <div class="input-group">
-            <input type="email" id="reset-email" placeholder="Correo Electrónico" required>
+            <!-- Campo de teléfono para restablecer contraseña -->
+            <input type="tel" id="reset-phone" placeholder="Número de Teléfono" required>
           </div>
           <button type="submit" class="btn">Enviar Instrucciones</button>
         </form>
       </div>
     </div>
   </div>
+  
+  <!-- Scripts -->
+  <!-- intl-tel-input -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <script>
+    // ==========================
+    // Inicialización intl-tel-input (Login)
+    // ==========================
+    const loginPhoneInput = document.querySelector("#login-phone");
+    if (loginPhoneInput) {
+      const itiLogin = window.intlTelInput(loginPhoneInput, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+          fetch("https://ipinfo.io/json?token=YOUR_TOKEN_HERE")
+            .then(resp => resp.json())
+            .then(data => {
+              const countryCode = (data && data.country) ? data.country : "us";
+              callback(countryCode);
+            })
+            .catch(() => {
+              callback("us");
+            });
+        },
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      });
+
+      // Evitar que se ingresen caracteres que no sean números
+      loginPhoneInput.addEventListener('keypress', function(e) {
+        if (!/[0-9]/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+      loginPhoneInput.addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+      });
+    }
+
+    // ==========================
+    // Inicialización intl-tel-input (Registro)
+    // ==========================
+    const registerPhoneInput = document.querySelector("#register-phone");
+    if (registerPhoneInput) {
+      const itiRegister = window.intlTelInput(registerPhoneInput, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+          fetch("https://ipinfo.io/json?token=YOUR_TOKEN_HERE")
+            .then(resp => resp.json())
+            .then(data => {
+              const countryCode = (data && data.country) ? data.country : "us";
+              callback(countryCode);
+            })
+            .catch(() => {
+              callback("us");
+            });
+        },
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      });
+
+      registerPhoneInput.addEventListener('keypress', function(e) {
+        if (!/[0-9]/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+      registerPhoneInput.addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+      });
+    }
+
+    // ==========================
+    // Inicialización intl-tel-input (Restablecimiento)
+    // ==========================
+    const resetPhoneInput = document.querySelector("#reset-phone");
+    if (resetPhoneInput) {
+      const itiReset = window.intlTelInput(resetPhoneInput, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+          fetch("https://ipinfo.io/json?token=YOUR_TOKEN_HERE")
+            .then(resp => resp.json())
+            .then(data => {
+              const countryCode = (data && data.country) ? data.country : "us";
+              callback(countryCode);
+            })
+            .catch(() => {
+              callback("us");
+            });
+        },
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      });
+
+      resetPhoneInput.addEventListener('keypress', function(e) {
+        if (!/[0-9]/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+      resetPhoneInput.addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+      });
+    }
+
+    // ==========================
+    // Toggles para mostrar/ocultar contraseñas
+    // ==========================
+    // Toggle login password
+    const toggleLoginPassword = document.getElementById("toggle-login-password");
+    const loginPassword = document.getElementById("login-password");
+    if (toggleLoginPassword && loginPassword) {
+      toggleLoginPassword.addEventListener('click', () => {
+        if (loginPassword.type === "password") {
+          loginPassword.type = "text";
+          toggleLoginPassword.textContent = "Ocultar";
+        } else {
+          loginPassword.type = "password";
+          toggleLoginPassword.textContent = "Mostrar";
+        }
+      });
+    }
+
+    // Toggle register password
+    const toggleRegisterPassword = document.getElementById("toggle-register-password");
+    const registerPassword = document.getElementById("register-password");
+    if (toggleRegisterPassword && registerPassword) {
+      toggleRegisterPassword.addEventListener('click', () => {
+        if (registerPassword.type === "password") {
+          registerPassword.type = "text";
+          toggleRegisterPassword.textContent = "Ocultar";
+        } else {
+          registerPassword.type = "password";
+          toggleRegisterPassword.textContent = "Mostrar";
+        }
+      });
+    }
+
+    // Toggle register confirm password
+    const toggleRegisterConfirmPassword = document.getElementById("toggle-register-confirm-password");
+    const registerConfirmPassword = document.getElementById("register-confirm-password");
+    if (toggleRegisterConfirmPassword && registerConfirmPassword) {
+      toggleRegisterConfirmPassword.addEventListener('click', () => {
+        if (registerConfirmPassword.type === "password") {
+          registerConfirmPassword.type = "text";
+          toggleRegisterConfirmPassword.textContent = "Ocultar";
+        } else {
+          registerConfirmPassword.type = "password";
+          toggleRegisterConfirmPassword.textContent = "Mostrar";
+        }
+      });
+    }
+  </script>
   
   <!-- Vinculación al JavaScript externo (autenticación y modales) -->
   <script src="scripts.js"></script>

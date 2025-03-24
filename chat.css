@@ -72,16 +72,19 @@ body {
 /* Mensajes de chat */
 .chat-message {
   display: flex;
-  align-items: flex-end;
   margin-bottom: 10px;
+  /* Aseguramos el ancho completo para controlar la alineación */
+  width: 100%;
 }
 
-.chat-message.received {
-  flex-direction: row;
-}
-
+/* Mensajes enviados (propios): alineados a la derecha */
 .chat-message.sent {
-  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* Mensajes recibidos: alineados a la izquierda */
+.chat-message.received {
+  justify-content: flex-start;
 }
 
 .message-avatar {
@@ -99,13 +102,17 @@ body {
   background: #fff;
   position: relative;
   font-size: 0.95rem;
+  /* Sombra para destacar el mensaje */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para mensajes enviados: fondo y texto distinto */
 .chat-message.sent .message-content {
   background: linear-gradient(45deg, #00dbde, #fc00ff);
   color: #fff;
 }
 
+/* La hora del mensaje */
 .message-time {
   display: block;
   font-size: 0.75rem;
@@ -118,7 +125,7 @@ body {
   margin-left: 5px;
 }
 
-/* Área de entrada de mensajes: ahora se fija justo encima de la barra inferior */
+/* Área de entrada de mensajes: fija justo encima de la barra inferior */
 .chat-input {
   position: fixed;
   bottom: 60px;  /* Ajusta según la altura de la barra inferior */

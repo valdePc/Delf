@@ -9,8 +9,8 @@
   <!-- Vincular el archivo CSS -->
   <link rel="stylesheet" href="chat.css">
   <!-- Incluir Firebase (si se usa en chat.js) -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script> -->
 </head>
 <body>
 
@@ -62,25 +62,10 @@
   </div>
 
   <!-- Área de conversación -->
-  <main class="chat-area">
-    <!-- Ejemplo de mensaje recibido -->
-    <div class="chat-message received">
-      <img class="message-avatar" src="https://via.placeholder.com/30" alt="Avatar">
-      <div class="message-content">
-        <p>Hola, ¿cómo estás?</p>
-        <span class="message-time">10:15</span>
-      </div>
-    </div>
-    <!-- Ejemplo de mensaje enviado -->
-    <div class="chat-message sent">
-      <div class="message-content">
-        <p>Muy bien, gracias. ¿Y tú?</p>
-        <span class="message-time">10:16 <i class="fa-solid fa-check-double read"></i></span>
-      </div>
-    </div>
+  <main class="chat-area" id="chatMessages">
     <!-- Aquí se agregarán los mensajes en tiempo real -->
   </main>
-
+  
   <!-- Área para escribir mensajes -->
   <footer class="chat-input">
     <button class="camera-btn" id="cameraBtn"><i class="fa-solid fa-camera"></i></button>
